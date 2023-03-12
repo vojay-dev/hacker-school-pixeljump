@@ -8,6 +8,7 @@ func game_over():
 	$Spieler.set_physics_process(false)
 
 	$Spieler/Camera2D/AnimationPlayer.play("shake")
+	$Audio/GameOverSound.play()
 	await $Spieler/Camera2D/AnimationPlayer.animation_finished
 	get_tree().reload_current_scene()
 
@@ -16,6 +17,7 @@ func gewonnen():
 
 	$Spieler.set_physics_process(false)
 
+	$Audio/GewonnenSound.play()
 	$Spieler/Camera2D/AnimationPlayer.speed_scale = 1
 	$Spieler/Camera2D/AnimationPlayer.play("zoom")
 	await $Spieler/Camera2D/AnimationPlayer.animation_finished
@@ -28,6 +30,7 @@ func _on_ziel_body_entered(body):
 func spieler_auf_start():
 	$Spieler.set_physics_process(false)
 
+	$Audio/GameOverSound.play()
 	$Spieler/Camera2D/AnimationPlayer.play("shake")
 	await $Spieler/Camera2D/AnimationPlayer.animation_finished
 	$Spieler.position = $SpielerStart.position

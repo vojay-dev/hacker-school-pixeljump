@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://okycjmm5em6a"]
+[gd_scene load_steps=53 format=3 uid="uid://okycjmm5em6a"]
 
 [ext_resource type="Script" path="res://spiel.gd" id="1_4u1n4"]
 [ext_resource type="Texture2D" uid="uid://fq7sajj26lpa" path="res://Tilemap/tiles_packed.png" id="1_7xb6c"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://3mtp5ykuknvd" path="res://vignette.png" id="9_x432g"]
 [ext_resource type="Texture2D" uid="uid://y84wgfohldcp" path="res://heart.png" id="10_mmft2"]
 [ext_resource type="Texture2D" uid="uid://bsqlvxrcr8b1h" path="res://hacker school.png" id="11_c3daa"]
+[ext_resource type="AudioStream" uid="uid://gk2wtv88o340" path="res://Monkeys-Spinning-Monkeys.mp3" id="13_isqiw"]
+[ext_resource type="AudioStream" uid="uid://tnxf07l11vyr" path="res://nope.mp3" id="14_tk6t1"]
+[ext_resource type="AudioStream" uid="uid://c6sx6rfgrbvqs" path="res://yay.mp3" id="15_k8q7i"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ub0qw"]
 polygon = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
@@ -1096,6 +1099,19 @@ offset_right = 787.0
 offset_bottom = 185.0
 scale = Vector2(0.226278, 0.226278)
 texture = ExtResource("11_c3daa")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Hintergrundmusik" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("13_isqiw")
+volume_db = -3.0
+autoplay = true
+
+[node name="GameOverSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("14_tk6t1")
+
+[node name="GewonnenSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("15_k8q7i")
 
 [connection signal="body_entered" from="Abgrund" to="Abgrund" method="_on_body_entered"]
 [connection signal="spieler_heruntergefallen" from="Abgrund" to="." method="_on_abgrund_spieler_heruntergefallen"]
