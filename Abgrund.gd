@@ -1,4 +1,7 @@
 extends Area2D
 
+signal spieler_heruntergefallen
+
 func _on_body_entered(body):
-	get_tree().reload_current_scene()
+	if body is Spieler:
+		emit_signal("spieler_heruntergefallen")

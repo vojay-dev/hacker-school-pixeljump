@@ -1,3 +1,4 @@
+class_name Spieler
 extends CharacterBody2D
 
 const gravity = 8.1
@@ -21,6 +22,7 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("stehen")
 
 	if Input.is_action_just_pressed("springen") and is_on_floor():
+		$JumpSound.play()
 		velocity.y = jump_force
 
 	move_and_slide()
